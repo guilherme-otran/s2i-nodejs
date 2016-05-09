@@ -45,6 +45,15 @@ RUN INSTALL_PKGS="zeromq-devel" && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y
 
+# Add label for GhostScript, Poppler, and ImageMagick
+LABEL io.openshift.tags="builder,nodejs,nodejs010,zeromq,ghostscript,poppler,imagemagick"
+
+# Add additional packages for GhostScript, Poppler, and ImageMagick
+RUN INSTALL_PKGS="ghostscript poppler-utils ImageMagick" && \
+    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    rpm -V $INSTALL_PKGS && \
+    yum clean all -y
+
 # Drop the root user and make the content of /opt/app-root owned by user 1001
 RUN chown -R 1001:0 /opt/app-root
 USER 1001
