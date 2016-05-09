@@ -45,6 +45,15 @@ RUN INSTALL_PKGS="zeromq-devel" && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y
 
+# Add label for GraphicsMagick
+LABEL io.openshift.tags="builder,nodejs,nodejs4,zeromq,graphicsmagick"
+
+# Add additional packages for GraphicsMagick
+RUN INSTALL_PKGS="GraphicsMagick" && \
+    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    rpm -V $INSTALL_PKGS && \
+    yum clean all -y
+
 # Drop the root user and make the content of /opt/app-root owned by user 1001
 RUN chown -R 1001:0 /opt/app-root
 USER 1001
