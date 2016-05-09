@@ -36,6 +36,15 @@ COPY ./contrib/ /opt/app-root
 
 RUN $PROMPT_COMMAND && npm install -g nodemon
 
+# Add label for ZeroMQ
+LABEL io.openshift.tags="builder,nodejs,nodejs010,zeromq"
+
+# Add additional packages for ZeroMQ
+RUN INSTALL_PKGS="zeromq-devel" && \
+    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    rpm -V $INSTALL_PKGS && \
+    yum clean all -y
+
 # Drop the root user and make the content of /opt/app-root owned by user 1001
 RUN chown -R 1001:0 /opt/app-root
 USER 1001
