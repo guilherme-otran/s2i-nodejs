@@ -10,47 +10,35 @@ The resulting image can be run using [Docker](http://docker.io).
 For more information about using these images with OpenShift, please see the
 official [OpenShift Documentation](https://docs.openshift.org/latest/using_images/s2i_images/nodejs.html).
 
+TODO:
+---------------
+* Add RedHat 7 Support
 
 Versions
 ---------------
 Node.JS versions currently provided are:
-* nodejs-0.10
-
-RHEL versions currently supported are:
-* RHEL7
+* nodejs-6
 
 CentOS versions currently supported are:
 * CentOS7
 
-
 Installation
 ---------------
-To build a Node.JS image, choose either the CentOS or RHEL based image:
-*  **RHEL based image**
-
-    To build a RHEL based Node.JS-0.10 image, you need to run the build on a properly
-    subscribed RHEL machine.
-
-    ```
-    $ git clone https://github.com/openshift/sti-nodejs.git
-    $ cd sti-nodejs
-    $ make build TARGET=rhel7 VERSION=0.10
-    ```
-
+To build a Node.JS image:
 *  **CentOS based image**
 
     This image is available on DockerHub. To download it run:
 
     ```
-    $ docker pull openshift/nodejs-010-centos7
+    $ docker pull guilhermeotran/nodejs6
     ```
 
     To build a Node.JS image from scratch run:
 
     ```
-    $ git clone https://github.com/openshift/sti-nodejs.git
+    $ git clone https://github.com/guilherme-otran/s2i-nodejs.git
     $ cd sti-nodejs
-    $ make build VERSION=0.10
+    $ make build VERSION=6
     ```
 
 **Notice: By omitting the `VERSION` parameter, the build/test action will be performed
@@ -70,23 +58,13 @@ Test
 This repository also provides a [S2I](https://github.com/openshift/source-to-image) test framework,
 which launches tests to check functionality of a simple Node.JS application built on top of the sti-nodejs image.
 
-Users can choose between testing a Node.JS test application based on a RHEL or CentOS image.
-
-*  **RHEL based image**
-
-    To test a RHEL7 based Node.JS-0.10 image, you need to run the test on a properly
-    subscribed RHEL machine.
-
-    ```
-    $ cd sti-nodejs
-    $ make test TARGET=rhel7 VERSION=0.10
-    ```
+Users can choose between testing a Node.JS test application based on a CentOS image
 
 *  **CentOS based image**
 
     ```
     $ cd sti-nodejs
-    $ make test VERSION=0.10
+    $ make test VERSION=6
     ```
 
 **Notice: By omitting the `VERSION` parameter, the build/test action will be performed
@@ -113,5 +91,5 @@ Image name structure
 2. Platform version(without dots) - 010
 3. Base builder image - centos7/rhel7
 
-Examples: `openshift/nodejs-010-centos7`, `openshift/nodejs-010-rhel7`
+Examples: `guilhermeotran/nodejs6`
 
