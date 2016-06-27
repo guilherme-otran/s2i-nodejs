@@ -42,15 +42,15 @@ To build a Node.JS image:
     ```
 
 **Notice: By omitting the `VERSION` parameter, the build/test action will be performed
-on all provided versions of Node.JS. Since we are currently providing only version `0.10`,
+on all provided versions of Node.JS. Since we are currently providing only version `6`,
 you can omit this parameter.**
 
 
 Usage
 ---------------------------------
 
-For information about usage of Dockerfile for NodeJS 0.10,
-see [usage documentation](0.10/README.md).
+For information about usage of Dockerfile for NodeJS 6,
+see [usage documentation](6/README.md).
 
 
 Test
@@ -68,7 +68,7 @@ Users can choose between testing a Node.JS test application based on a CentOS im
     ```
 
 **Notice: By omitting the `VERSION` parameter, the build/test action will be performed
-on all provided versions of Node.JS. Since we are currently providing only version `0.10`
+on all provided versions of Node.JS. Since we are currently providing only version `6`
 you can omit this parameter.**
 
 
@@ -89,6 +89,6 @@ Image name structure
 
 1. Platform name (lowercase) - nodejs
 2. Platform version(without dots) - 010
-3. Base builder image - centos7/rhel7
+3. Base builder image - centos7
 
 Examples: `guilhermeotran/nodejs6`
